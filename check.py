@@ -2,6 +2,7 @@ import urllib.request
 from parsel import Selector
 import socket
 from multiprocessing import Pool
+import itertools
 def mon(inputs):
     week=[]
     errored_out=[]
@@ -71,4 +72,10 @@ if __name__ == '__main__':
     pool = Pool(8)
     posts=pool.map(post,d)
     print (len(posts))
+    mearg = list(itertools.chain.from_iterable(posts))
+    m = [x for x in mearg if x != []]
+    total = list(itertools.chain.from_iterable(m))
+    print (len(total))
+    
+    
     
